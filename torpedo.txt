@@ -1,0 +1,8 @@
+crear modulos en python (archivos .py). 
+crear un modulo llamado main, que sera donde se trabajará principalmente
+crear un modulo para los datos
+crear un modulo para las funciones
+importar los modulos a main (conectar los modulos) from modulox import* (el asterisco impota todo, tambien se puede indicar alguna funcionalidad)
+un paquete es la carpeta que contiene un grupo de modulos
+
+
