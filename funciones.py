@@ -1,3 +1,5 @@
+from datos import *
+
 def login(usuario,password):
     for i in range(3):
         ingresa_usuario = input("Ingrese su usuario: ")
@@ -30,3 +32,19 @@ def menu():
     6.- Ajuste de inventario por mermas.
     7.- Salir del sistema.
     """)
+    
+def entrada_compras(herramienta,lote,cantidad,costo):
+    if herramienta not in herramientas:    
+        herramientas[herramienta]=[]  #agrego la herramienta al directorio principal   (diccionario externo)   
+        # Agregar elementos a la lista metodo append, variable.append(nuevo elemento)
+        herramientas[herramienta].append({"lote":lote,"cantidad":cantidad,"costo":costo})
+    else:
+        herramientas[herramienta].append({"lote":lote,"cantidad":cantidad,"costo":costo})    
+    
+    print(herramientas)
+    print(f"El costo de las mercaderías ascienden a $ {cantidad*costo}")
+    print("Se ha registrado la entrada de mercaderías")
+    return
+
+#def salida_venta():
+    
