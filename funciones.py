@@ -67,16 +67,14 @@ def validar_venta(herramienta,cantidad_vendida):
             
 def descontar_fifo_venta(herramienta,cantidad_vendida):
     cantidad_pendiente = cantidad_vendida
-    print(cantidad_pendiente)
     for lote in herramientas[herramienta]:
-        print(lote)
-        if cantidad_pendiente <= lote["cantidad"]:
-            cantidad_pendiente -= lote["cantidad"]
-            print(cantidad_pendiente)
-        else:
-            
-            nuevo_saldo = cantidad_vendida - cantidad_pendiente
-        return nuevo_saldo
         
-        print(nuevo_saldo) 
+        if lote["cantidad"] >= cantidad_pendiente:
+            saldo = lote["cantidad"] - cantidad_pendiente
+            lote["cantidad"] =saldo
+            break
+        else:
+            cantidad_pendiente -= lote["cantidad"]
+            lote["cantidad"] = 0
+             
     
