@@ -2,9 +2,9 @@ from datos import*
 from funciones import*
 
 def main():
-    if not login(usuario,password):
+    """if not login(usuario,password):
         return
-    
+    """
     while True:
         menu()
 
@@ -13,24 +13,34 @@ def main():
         if opcion =="1":
             print(" 📥 Entrada de mercadería por compras")
             
-            herramienta =  input("Ingrese la herramienta a registrar: ")
-            lote = input("Ingrese lote: ")
+            herramienta =  input("Ingrese la herramienta a registrar: ").lower()
+            lote = int(input("Ingrese lote: "))
             cantidad = int(input("Ingrese cantidad: "))   
             costo = int(input("Ingrese precio unitario: "))  
+            
             entrada_compras(herramienta,lote,cantidad,costo)      
-            
-            
-                    
+                                
         elif opcion =="2":
             print(" 📤 Salida de mercadería por ventas")
-            herramienta = input("que harramienta se vendió?: ")
-            #lote = input("A que lote corresponde: ") aca no debe se input, se debe descontar lote mas antiguo
-            cantidad = int(input("Ingrese cantidad vendida: "))   
-            #costo = int(input("Ingrese precio unitario: ")) Aca el costo debe provenir de lote mas antiguo
+            herramienta = input("que harramienta se vendió?: ").lower()
+            if existencia(herramienta):
+                cantidad_vendida = int(input("Ingrese cantidad vendida: "))    
+                if validar_venta(herramienta,cantidad_vendida):
+                    descontar_fifo_venta(herramienta,cantidad_vendida)
+                    
             
+            print(herramientas)
+                        
             
         elif opcion =="3":
             print(" 🤦‍♀️ Salida de mercadería por nota de crédito")
+            
+            herramienta =  input("Ingrese la herramienta a registrar: ").lower()
+            lote = int(input("Ingrese lote: "))
+            cantidad = int(input("Ingrese cantidad: "))   
+            costo = int(input("Ingrese precio unitario: "))
+            
+            
             
         elif opcion =="4":
             print(" 🪃 Entrada de mercadería por nota de crédito")

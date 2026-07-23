@@ -35,7 +35,7 @@ def menu():
     
 def entrada_compras(herramienta,lote,cantidad,costo):
     if herramienta not in herramientas:    
-        herramientas[herramienta]=[]  #agrego la herramienta al directorio principal   (diccionario externo)   
+        herramientas[herramienta]=[]  #agrego la herramienta al directorio principal(diccionario externo)   
         # Agregar elementos a la lista metodo append, variable.append(nuevo elemento)
         herramientas[herramienta].append({"lote":lote,"cantidad":cantidad,"costo":costo})
     else:
@@ -43,8 +43,40 @@ def entrada_compras(herramienta,lote,cantidad,costo):
     
     print(herramientas)
     print(f"El costo de las mercaderías ascienden a $ {cantidad*costo}")
-    print("Se ha registrado la entrada de mercaderías")
+    print(f"Se ha registrado la entrada de {herramienta} al inventario")
     return
 
-#def salida_venta():
+def existencia(herramienta):
+    if herramienta not in herramientas:
+        print(f"no tenemos {herramienta} en el inventario, contacte al vendedor")    
+        return False
+    
+    return True
+
+
+def validar_venta(herramienta,cantidad_vendida):
+    
+    cantidad_total = 0
+    for lote in herramientas[herramienta]:
+        cantidad_total += lote["cantidad"]
+    if cantidad_total >= cantidad_vendida:
+            return True
+    
+    print("No tenemos suficientes unidades de {herramienta}, para completar el pedido, contacte al vendedor")    
+    return False    
+            
+def descontar_fifo_venta(herramienta,cantidad_vendida):
+    cantidad_pendiente = cantidad_vendida
+    print(cantidad_pendiente)
+    for lote in herramientas[herramienta]:
+        print(lote)
+        if cantidad_pendiente <= lote["cantidad"]:
+            cantidad_pendiente -= lote["cantidad"]
+            print(cantidad_pendiente)
+        else:
+            
+            nuevo_saldo = cantidad_vendida - cantidad_pendiente
+        return nuevo_saldo
+        
+        print(nuevo_saldo) 
     

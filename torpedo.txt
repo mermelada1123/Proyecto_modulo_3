@@ -4,8 +4,10 @@ crear un modulo para los datos
 crear un modulo para las funciones
 importar los modulos a main (conectar los modulos) from modulox import* (el asterisco impota todo, tambien se puede indicar alguna funcionalidad)
 un paquete es la carpeta que contiene un grupo de modulos
+
 para la salidad de inventario el lote y el costo no pueden venir dados por el usuario, sino por antiguedad de lotes en stock,
 talvez sea conveniente usar un condicional, luego de verificar lote mas antiguo, el condicional debe
 validar que la salida sea menor o igual a la cantidad del stock, sino, la diferencia imputarla al siguente lote, sino, indicar que no hay suficiente stock dar una alerta para comprar al proveeedor
+primero hacer un condicional para comprobar que la herramienta existe, identificar el lote mas antiguo, despues que la salida no supere el lote mas antiguo, que el excedente de salida, sea menor o igual al sigueente lote, y asi sucesivamente, y si la venta supera el stock alertar que que se debe comprar mercaderias o cancelar venta.
 
-
+Por ahora el lote lo estoy guardando con numuro y no por fecha, por lo que ei input de lote se convierte a entero, para poder realizar una comparación.
