@@ -10,4 +10,26 @@ talvez sea conveniente usar un condicional, luego de verificar lote mas antiguo,
 validar que la salida sea menor o igual a la cantidad del stock, sino, la diferencia imputarla al siguente lote, sino, indicar que no hay suficiente stock dar una alerta para comprar al proveeedor
 primero hacer un condicional para comprobar que la herramienta existe, identificar el lote mas antiguo, despues que la salida no supere el lote mas antiguo, que el excedente de salida, sea menor o igual al sigueente lote, y asi sucesivamente, y si la venta supera el stock alertar que que se debe comprar mercaderias o cancelar venta.
 
-Por ahora el lote lo estoy guardando con numuro y no por fecha, por lo que ei input de lote se convierte a entero, para poder realizar una comparación.
+Por ahora el lote lo estoy guardando con numero y no por fecha, por lo que el input de lote se convierte a entero, para poder realizar una comparación.
+
+Función: descontar_fifo_venta()
+
+Entradas:
+- herramienta
+- cantidad_vendida
+
+Proceso:
+
+cantidad_pendiente = cantidad_vendida  #lo que vedo es lo que esta pendiente de entregar, la variable debe llegar a 0 con las iteraciones
+
+Para cada lote de la herramienta:
+
+    Si el lote tiene suficiente cantidad:                        #lote>=cantidad_pendiente
+        Restar la cantidad pendiente al lote.                    #modificar la cantidad en el lote, es un diccionario, se sobreescibe
+    La cantidad pendiente queda en 0.                            herramientas[herramienta]={["Lote":lote,"cantidad":cantidad-cantidad_pendiente,"costo":costo]}
+        Terminar la función.
+
+    Si el lote no tiene suficiente cantidad:                     #lote<cantidad_pendiente
+        Restar la cantidad del lote a la cantidad pendiente.     #cantidad_pendiente -= lote["cantidad"]
+        Dejar el lote en 0.                                      #modificar la cantidad en el lote, es un diccionario, se sobreescibe#
+        Continuar con el siguiente lote.

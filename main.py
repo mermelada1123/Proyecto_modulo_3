@@ -47,6 +47,11 @@ def main():
             
         elif opcion =="5":
             print(" 📲 Inventario y costo actual")
+            mostrar_listado_herrramientas()
+            
+            herramienta = input("a que herramienta le consultará el stock: ")
+            
+            mostrar_inventario(herramienta)
             
         elif opcion =="6":
             print(" 🔧 Ajustes de Inventario")
