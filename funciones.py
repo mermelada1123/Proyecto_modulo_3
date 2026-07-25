@@ -26,29 +26,29 @@ def menu():
 
     1.- Registrar compra al proveedor.
     2.- Registrar venta de mercaderia.
-    3.- Registrar devolución al proveedor.
-    4.- Registrar devolución de cliente.
-    5.- Mostrar Stock de inventario.
-    6.- Ajuste de inventario por mermas.
-    7.- Salir del sistema.
+    3.- Mostrar Stock de inventario.
+    4.- Historial de compras.
+    5.- Salir del sistema.
     """)
     
 def entrada_compras(herramienta,lote,cantidad,costo):
+    
     if herramienta not in herramientas:    
         herramientas[herramienta]=[]  #agrego la herramienta al directorio principal(diccionario externo)   
         # Agregar elementos a la lista metodo append, variable.append(nuevo elemento)
         herramientas[herramienta].append({"lote":lote,"cantidad":cantidad,"costo":costo})
+        historial_compras.append((herramienta,lote,cantidad,costo))
     else:
         herramientas[herramienta].append({"lote":lote,"cantidad":cantidad,"costo":costo})    
-    
+        historial_compras.append((herramienta,lote,cantidad,costo))
     print(herramientas)
-    print(f"El costo de las mercaderías ascienden a $ {cantidad*costo}")
-    print(f"Se ha registrado la entrada de {herramienta} al inventario")
+    print(f"El costo del lote asciende a $ {cantidad*costo}")
+    print(f" ✅ Se ha registrado la entrada de {herramienta} al inventario")
     return
 
 def existencia(herramienta):
     if herramienta not in herramientas:
-        print(f"no tenemos {herramienta} en el inventario, contacte al vendedor")    
+        print(f" ⚠️ no tenemos {herramienta} en el inventario, contacte al vendedor")    
         return False
     
     return True
@@ -106,3 +106,10 @@ def mostrar_inventario(herramienta):
     print(f"Costo total del inventario $ {costo_acumulado}")    
     print("--------------------------------------------------")  
     
+def mostrar_historial_compras():
+
+    print("-------------------------------------------------------------------------------------------------------------------------")
+    print(f"{'herramienta':>15}{'lote':>15}{'cantidad':>15}{'costo':>15}")
+    print("-------------------------------------------------------------------------------------------------------------------------")#va entre (')si es un texto, seguido del formato y entre llaves, su es una variable, usa las llaves que ya usa la variable, junto con el formato 
+    for herramienta,lote,cantidad,costo in historial_compras:
+        print(f"{herramienta:>15}{lote:>15}{cantidad:>15}{costo:>15}")
