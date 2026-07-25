@@ -41,7 +41,7 @@ def entrada_compras(herramienta,lote,cantidad,costo):
     else:
         herramientas[herramienta].append({"lote":lote,"cantidad":cantidad,"costo":costo})    
         historial_compras.append((herramienta,lote,cantidad,costo))
-    print(herramientas)
+    
     print(f"El costo del lote asciende a $ {cantidad*costo}")
     print(f" ✅ Se ha registrado la entrada de {herramienta} al inventario")
     return

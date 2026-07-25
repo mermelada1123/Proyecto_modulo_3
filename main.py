@@ -2,9 +2,9 @@ from datos import*
 from funciones import*
 
 def main():
-    """if not login(usuario,password):
+    if not login(usuario,password):
         return
-    """
+    
     while True:
         menu()
 
